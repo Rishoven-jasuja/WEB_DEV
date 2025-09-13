@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form basics</title>
+
+</head>
+<body>
+    
+  
+
+    <h1> Mini Project</h1>
+
+    <form >
+        <h1> University Registration Form</h1>
+        <br>
+        <p> please fill the form to register</p>
+
+        <hr>
+        <h2> personal details</h2>
+        
+        <br>
+        <label for="firstname"> First Name:</label>
+        <input type="text" name="firstname" id="firstname" placeholder="e.g.,Arjun" required>
+        <br> <br>
+        <label for="lastname"> Last Name:</label>
+        <input type="text" name="lastname" id="lastname" placeholder="e.g.,Kumar"required>
+
+        <br> <br>
+        <label for="DOB"> Date of Birth:</label>
+        <input type="date" name="DOB" id="DOB">
+<br> <br>
+        <label for="gender">Gender:</label>
+        <br>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male" required>
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female" required>
+        
+        <label for="other">Other</label>
+        <input type="radio" name="gender" id="other" value="other" required>
+        <br> <br>
+        <label for="file"> upload your resume:</label>
+        <br>
+        <input type="file" name="file" id="file">
+
+        <hr/>
+
+        <h2> contact info</h2>
+
+        <br>
+        <label for="email"> Email:</label>
+        <input type="email" name="email" id="email" placeholder="you@example.com " required>
+        <br> <br>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" name="phone" id="phone" placeholder="+91 12345 67890">
+        <br> <br>
+         <label for="address"> Address:</label>
+         <br>
+        <textarea name="address" id="address" rows="7" cols="18" placeholder="street address,city,state"></textarea>
+        <br>
+
+        <hr/>
+        <h2>Academic Info</h2>
+        <label for="course"> Select Course:</label>
+        <input list="courses" name="course" id="course" placeholder="select your course" required>
+        
+        <datalist id="courses">
+            <option value="B.Tech">
+            <option value="B.Sc">
+            <option value="B.Com">
+            <option value="BBA">
+            <option value="MBA">
+            <option value="M.Tech">
+            <option value="M.Sc">
+            <option value="M.Com">
+        </datalist>
+
+        <br> <br>
+
+        <label for="interest"> Extracurricular interest</label>
+         
+        <br>
+        <input type="checkbox" name="interest" id="sports" value="sports">
+        <label for="sports"> Sports</label>
+<br>
+        <input type =checkbox name="interest" id="music" value="music">
+        <label for="music"> Music</label>
+<br>
+        <input type="checkbox" name="interest" id="arts" value="arts">
+        <label for="arts"> arts</label>
+<br>
+<hr>
+<h2> create your account</h2>
+
+<label for="password">password</label>
+<input type="password" name="password" id="password" placeholder="create password">
+<br><br>
+<label for="hobby"> select hobby</label>
+<select name="hobby" id="hobby">
+    <option value="" >select hobby</option>
+    <option value="dance">dance</option>
+    <option value="reading"> reading</option>
+
+</select>
+<br> <br>
+
+<hr>
+<button type="submit"> register</button>
+<button type="reset"> clear form</button>
+    </form>
+    
+
+</body>
+</html>

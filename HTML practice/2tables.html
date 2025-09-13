@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2px">
+        <thead>
+        <th> item</th>
+         <th> quantity</th>
+          <th> price</th>
+          </thead>
+
+          <tbody>
+        <tr> 
+            <td>apple</td>
+            <td> 10</td>
+            <td> $1.0</td>
+        </tr>
+        <tr>
+            <td>banana</td>
+            <td> 5</td>
+            <td> $0.5</td>
+        </tr>
+        <tbody>
+
+
+            <tfoot>
+        <tr>
+            <td>orange</td>
+            <td> 8</td>
+            <td> $0.8</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <hr/>
+
+    <h1>table for understanding colspan</h1>
+
+    <table border = "2px">
+        <thead>
+        <tr>
+            <th >name</th>
+            <th colspan="2"> contact info</th>
+        </tr>
+        </thead>
+<tbody>
+        <tr>
+            <td> rj</td>
+            <td> 76543</td>
+            <td> dhf@gmail</td>
+        </tr>
+</tbody>
+
+<tfoot>
+     <tr>
+            <!-- <td rowspan="2"> rishu</td> -->
+            <td> 765876</td>
+            <td> new@gmail</td>
+        </tr>
+</tfoot>
+
+    </table>
+
+    <hr/>
+<h2> table for understanding rowspan</h2>
+<table border="2px">
+<tr>
+    <th>col1</th>
+    <th>col2</th>
+    <th>col3</th>
+</tr>
+
+<tr>
+    <td rowspan="2"> row1 and row2 merged</td>
+    <td> row1 col2</td>
+    <td> row1 col3</td>
+</tr>
+<tr>
+    <td> row 2 col2</td>
+    <td> row 3 col3</td>
+</tr>
+<tr>
+    <td colspan="3">
+        row 3 all columns merged
+    </td>
+</tr>
+</table>
+
+<h3> little complex table</h3>
+
+<table border ="2px">
+    <tr>
+        <th> l1</th>
+        <th> l2</th>
+        <th> l3</th>
+        <th> l4</th>
+        <th> l5</th>
+    </tr>
+    <tr>
+        <td rowspan="6" >system</td>
+         <td rowspan="4">system apps</td>
+         <td rowspan="3"> system env</td>
+         <td>app test</td>
+         <td rowspan="2"> foo </td>
+
+    </tr>
+
+
+    <tr>
+     <td> app memory</td> 
+    </tr>
+
+    <tr>
+        <td> app test</td>
+        <td rowspan ="2"> hii</td>
+    </tr>
+
+    <tr> 
+        <td> system env 2</td>
+        <td> app memory</td>
+    </tr>
+
+    <tr>
+        <td rowspan="2" colspan="2"> system memory </td>
+        <td> memory read</td>
+        <td> mobile</td>
+    </tr>
+    <tr> 
+        <td> apes</td>
+        <td> done</td>
+    </tr>
+</table>
+</body>
+</html>
