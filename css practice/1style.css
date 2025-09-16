@@ -1,0 +1,49 @@
+h1{
+    background-color: aqua;
+}
+h2{
+    color:red;
+
+}
+
+.ex{
+    color: blueviolet;
+    background-color: chartreuse;
+    border-radius: 10px;
+}
+#list2{
+    background-color: black;
+    color: coral;
+}
+
+h3,.group{
+    border: 7px solid red; 
+    background-color: blueviolet;
+    color: blanchedalmond;
+}
+#ban{
+    font-size: x-large;
+
+}
+#shake{
+    font-size: xx-large;
+    text-align: center;
+}
+
+*{
+    background-color: black;
+    color: white;
+}
+
+
+.ex{
+    font-size:25px;
+}
+li{
+    font-size:2em;
+}
+
+p{
+    font-size:10vw;
+}
+
