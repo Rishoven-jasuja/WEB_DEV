@@ -2,7 +2,7 @@ h1{
     background-color: crimson;
     height: 30vh;
     text-align: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     width:100vw;
     border-width: 5px;
     border-style: solid;
@@ -27,4 +27,78 @@ h1{
     top:20px;
     left:50px;
     
+
 }
+#nav{
+    background-color: blue;
+    /* position:fixed; */
+    top:0px;
+}
+#stick{
+    background-color: deeppink;
+    position:sticky;
+    top:123px;
+}
+#div{
+    height: 200px;
+    width:100vw;
+    background-color: brown;
+}
+#japan{
+    width:220px;
+    margin-top: 65px;
+    height:150px;
+    background-color: floralwhite;
+    position: relative;
+
+}
+#japcir{
+    background-color: rgb(255, 3, 3);
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    position: absolute;
+    top:31%;
+    right:40%;
+    
+}
+#container{
+    height: 125px;
+    width:200px;
+    background-color: yellow;
+    position :relative;
+}
+.small1{
+    background-color: blue;
+    height: 50px;
+    width:66px;
+}
+#s2{
+
+background-color: blue;
+bottom:0px;
+left:0px;
+position:absolute
+}
+.big{
+    background-color: blue;
+   height: 50px;
+    width:100px;
+}
+#b3{
+position:absolute;
+background-color: blue;
+top:0px;
+right:0px;
+
+}
+#b4{
+position:absolute;
+background-color: blue;
+bottom:0px;
+right:0px;
+
+}
+
+
+

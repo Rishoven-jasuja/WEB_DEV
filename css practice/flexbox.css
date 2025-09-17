@@ -1,0 +1,67 @@
+.container{
+    background-color: antiquewhite;
+    display:flex;
+
+flex-wrap: wrap;
+}
+.first{
+background-color: red;
+
+
+}
+.first:hover{
+    background-color: black;
+    transform: scalex(2);
+}
+.second{
+    background-color:blue;
+}
+.third{
+    background-color:brown;
+}
+.fourth{
+    background-color: chartreuse;
+}
+.box{
+    margin:10px;
+    height:45px;
+    width:60px;
+}
+
+.container2{
+    background-color: antiquewhite;
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+
+}
+/* align items is used to align element acc to cross axis like if flex direction is row then it will operate acc to y axis 
+
+justify content is used to align acc to major axis
+*/
+
+*{
+    background-color: black;
+}
+.flag{
+    background-color: white;
+    height: 100px;
+    width: 170px;
+    margin-top: 30px;
+    display:flex;
+    justify-content:center;
+    display: flex;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.circle{
+    background-color: red;
+    
+    height:40px;
+    width:40px;
+    
+    border-radius: 50%;
+}
