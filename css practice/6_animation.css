@@ -1,0 +1,97 @@
+*{
+   
+    padding:0px;
+    box-sizing: border-box;
+    background-color:black;
+
+}
+.container{
+    padding: 20px;
+    position:relative;
+}
+.box{
+    height:100px;
+    width:150px;
+    background-color: blue;
+    animation-name: moving;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position:absolute;
+    animation-timing-function: ease-out ;
+    animation-direction: alternate;
+    
+}
+
+@keyframes moving{
+    from{
+        background-color:blue;
+        top:10px;
+        left:10px;
+
+    }
+    to{
+        background-color:orangered;
+      top:100px;
+      left:700px;
+    }
+}
+
+.container1{
+    margin-top:166px;
+    margin-left:100px;
+    padding:20px;
+    background-color: darkblue;
+    color:bisque;
+
+    height:200px;
+    width:800px;
+    font-size:30px;
+    white-space: nowrap;
+overflow:hidden;
+}
+p{
+    margin-left:100%;
+    background-color: darkblue;
+    animation-name:slide ;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    
+    animation-timing-function: linear;
+    animation-duration: 6s;
+    white-space: nowrap;
+    overflow:hidden;
+    animation-timing-function: ease-in-out;
+border-radius: 8px;
+    box-shadow: 0 4px 12px rgb(174, 183, 3);
+}
+
+body{
+    display: flex;
+    overflow: hidden;
+}
+@keyframes slide{
+    0%{
+
+    margin-left:100%;
+    background-color: darkblue;
+    color:bisque;
+    }
+
+    50%{
+        margin-left:50%;
+        color:chartreuse;
+    background-color: darkblue;
+
+    }
+
+    100%{
+        color:darkorange;
+        margin-left:-100%;
+    background-color: darkblue;
+
+    }
+}
+p:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellsync Personalized Wellness Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif;}
+body{
+  background:#f5f7fa;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:30px;
+  gap:30px;
+  color:#333;
+}
+.column{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+  flex:1 1 400px;
+  max-width:480px;
+}
+.card{
+  background:#fff;
+  border-radius:15px;
+  padding:25px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+h2,h3{text-align:center; margin-bottom:20px; color:#111;}
+select,input,textarea,button{
+  width:100%; padding:12px; margin-bottom:15px;
+  border-radius:10px; border:1px solid #ccc; font-size:15px;
+}
+textarea{resize:none;}
+button{
+  background:#4eac6d; color:#fff; border:none; cursor:pointer; transition:0.3s;
+}
+button:hover{background:#3e8e56;}
+.section{background:#f0f2f5; padding:15px; border-radius:10px; margin-top:15px; font-size:14px;}
+.section div{margin-bottom:8px;}
+table{width:100%; border-collapse:collapse; margin-top:10px;}
+th,td{padding:8px; text-align:center; border-bottom:1px solid #ddd; font-size:13px;}
+canvas{background:#f0f2f5; border-radius:10px; margin-top:15px; padding:10px;}
+ul{padding-left:20px;}
+@media screen and (max-width:1000px){
+  body{flex-direction:column; align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="column">
+  <!-- Mood Logger Card -->
+  <div class="card">
+    <h2>Mood Logger</h2>
+    <select id="moodSelect" onchange="showFollowUps()">
+      <option value="">How are you feeling today?</option>
+      <option value="happy">😊 Happy</option>
+      <option value="neutral">😐 Neutral</option>
+      <option value="sad">😔 Sad</option>
+      <option value="stressed">😫 Stressed</option>
+      <option value="anxious">😟 Anxious</option>
+    </select>
+    <div id="followUps" style="display:none;">
+      <input type="number" id="intensityLevel" placeholder="Intensity / Severity (1-5)" min="1" max="5">
+      <textarea id="notes" placeholder="Optional: Add notes or triggers" rows="2"></textarea>
+    </div>
+    <button onclick="logMood()">Submit Mood</button>
+  </div>
+
+  <!-- Personalized Guidance Card -->
+  <div class="card">
+    <h2>Personalized Guidance</h2>
+    <div class="section" id="guidanceBox">
+      <div>Submit a mood to see your personalized tips, exercises, books, and videos.</div>
+    </div>
+  </div>
+</div>
+
+<div class="column">
+  <!-- Dashboard Card -->
+  <div class="card">
+    <h2>Wellness Dashboard</h2>
+    <div class="section" id="statsBox">
+      <div>Total Logs: <span id="totalLogs">0</span></div>
+      <div>Last Mood: <span id="lastMood">None</span></div>
+      <div>Avg Intensity: <span id="avgIntensity">N/A</span></div>
+      <div>Most Frequent Mood: <span id="freqMood">N/A</span></div>
+      <div>Health Alert: <span id="healthAlert">N/A</span></div>
+    </div>
+
+    <h3>Mood Trend</h3>
+    <canvas id="trendChart" height="200"></canvas>
+
+    <h3>Mood Distribution</h3>
+    <canvas id="pieChart" height="200"></canvas>
+
+    <h3>Mood History</h3>
+    <div class="section history">
+      <table id="historyTable">
+        <thead>
+          <tr><th>Date</th><th>Mood</th><th>Intensity</th><th>Notes</th><th>Resources</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <button onclick="resetDashboard()">Reset Dashboard</button>
+  </div>
+</div>
+
+<script>
+const resources = {
+  happy:{
+    tips:["Keep gratitude journaling","Share your happiness with friends"],
+    exercises:["Quick walk outside","5-min meditation"],
+    books:["The Happiness Advantage by Shawn Achor"],
+    videos:["https://www.youtube.com/watch?v=example_happy_video"]
+  },
+  neutral:{
+    tips:["Engage in hobbies or light reading","Short meditation for clarity"],
+    exercises:["10-min stretching","Breathing exercises"],
+    books:["Mindfulness in Plain English by Henepola Gunaratana"],
+    videos:["https://www.youtube.com/watch?v=example_neutral_video"]
+  },
+  sad:{
+    tips:["Listen to uplifting music","Write down your thoughts"],
+    exercises:["Walk outside","Journaling exercise"],
+    books:["Feeling Good by David D. Burns"],
+    videos:["https://www.youtube.com/watch?v=example_sad_video"]
+  },
+  stressed:{
+    tips:["Do deep breathing exercises","Take small breaks"],
+    exercises:["Progressive muscle relaxation","10-min yoga"],
+    books:["The Relaxation and Stress Reduction Workbook by Martha Davis"],
+    videos:["https://www.youtube.com/watch?v=example_stress_video"]
+  },
+  anxious:{
+    tips:["Focus on grounding techniques","Practice mindfulness"],
+    exercises:["Guided meditation","Writing worries down"],
+    books:["The Anxiety and Phobia Workbook by Edmund Bourne"],
+    videos:["https://www.youtube.com/watch?v=example_anxiety_video"]
+  }
+};
+
+let moodHistory = JSON.parse(localStorage.getItem('moodHistory')) || [];
+
+// Charts
+const trendCtx = document.getElementById('trendChart').getContext('2d');
+const trendChart = new Chart(trendCtx,{
+  type:'line',
+  data:{labels:[],datasets:[{label:'Intensity',data:[],borderColor:'#4eac6d',fill:false,tension:0.3}]},
+  options:{scales:{y:{min:0,max:5,stepSize:1}}}
+});
+
+const pieCtx = document.getElementById('pieChart').getContext('2d');
+const pieChart = new Chart(pieCtx,{
+  type:'pie',
+  data:{labels:[],datasets:[{data:[],backgroundColor:['#4eac6d','#6c5ce7','#ff6b6b','#fd79a8','#eccc68']}]}
+});
+
+function showFollowUps(){
+  const mood = document.getElementById('moodSelect').value;
+  if(mood && mood!=='neutral' && mood!=='happy'){
+    document.getElementById('followUps').style.display='block';
+  } else {
+    document.getElementById('followUps').style.display='none';
+    document.getElementById('intensityLevel').value='';
+    document.getElementById('notes').value='';
+  }
+}
+
+function logMood(){
+  const mood = document.getElementById('moodSelect').value;
+  if(!mood){alert("Select a mood"); return;}
+  let intensity = 3;
+  if(mood!=='happy' && mood!=='neutral'){
+    intensity = parseInt(document.getElementById('intensityLevel').value);
+    if(!intensity || intensity<1 || intensity>5){alert("Enter intensity 1-5"); return;}
+  }
+  const notes = document.getElementById('notes').value;
+  const suggestionData = resources[mood];
+  const suggestionHTML = `<div>
+    <strong>Tips:</strong><ul>${suggestionData.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
+    <strong>Exercises:</strong><ul>${suggestionData.exercises.map(e=>`<li>${e}</li>`).join('')}</ul>
+    <strong>Books:</strong><ul>${suggestionData.books.map(b=>`<li>${b}</li>`).join('')}</ul>
+    <strong>Videos:</strong><ul>${suggestionData.videos.map(v=>`<li><a href="${v}" target="_blank">${v}</a></li>`).join('')}</ul>
+  </div>`;
+  document.getElementById('guidanceBox').innerHTML = suggestionHTML;
+
+  const entry = {date:new Date().toLocaleString(), mood, intensity, notes, resources:suggestionData};
+  moodHistory.push(entry);
+  localStorage.setItem('moodHistory', JSON.stringify(moodHistory));
+  updateDashboard();
+
+  document.getElementById('moodSelect').value='';
+  showFollowUps();
+}
+
+function updateDashboard(){
+  const total = moodHistory.length;
+  document.getElementById('totalLogs').textContent = total;
+  const last = moodHistory[total-1] || {};
+  document.getElementById('lastMood').textContent = last.mood || 'None';
+  const avgIntensity = total ? (moodHistory.reduce((a,e)=>a+e.intensity,0)/total).toFixed(2) : 'N/A';
+  document.getElementById('avgIntensity').textContent = avgIntensity;
+
+  const freq = {};
+  moodHistory.forEach(e=>freq[e.mood]=(freq[e.mood]||0)+1);
+  const mostFreq = Object.entries(freq).sort((a,b)=>b[1]-a[1])[0]?.[0] || 'N/A';
+  document.getElementById('freqMood').textContent = mostFreq;
+
+  let alertText = 'All good';
+  const recent = moodHistory.slice(-3);
+  if(recent.filter(e=>e.mood==='stressed'||e.mood==='anxious').length>=2){
+    alertText = '⚠ Persistent stress/anxiety detected! Check personalized exercises and resources.';
+  }
+  document.getElementById('healthAlert').textContent = alertText;
+
+  trendChart.data.labels = moodHistory.map(e=>e.date);
+  trendChart.data.datasets[0].data = moodHistory.map(e=>e.intensity);
+  trendChart.update();
+
+  const moodCount = {};
+  moodHistory.forEach(e=>moodCount[e.mood]=(moodCount[e.mood]||0)+1);
+  pieChart.data.labels = Object.keys(moodCount);
+  pieChart.data.datasets[0].data = Object.values(moodCount);
+  pieChart.update();
+
+  const tbody = document.querySelector("#historyTable tbody");
+  tbody.innerHTML='';
+  moodHistory.slice().reverse().forEach(e=>{
+    const resHTML = `<ul>
+      ${e.resources.tips.map(t=>`<li>${t}</li>`).join('')}
+      ${e.resources.exercises.map(ex=>`<li>${ex}</li>`).join('')}
+      ${e.resources.books.map(b=>`<li>${b}</li>`).join('')}
+      ${e.resources.videos.map(v=>`<li><a href="${v}" target="_blank">${v}</a></li>`).join('')}
+    </ul>`;
+    const row = document.createElement('tr');
+    row.innerHTML=`<td>${e.date}</td><td>${e.mood}</td><td>${e.intensity}</td><td>${e.notes}</td><td>${resHTML}</td>`;
+    tbody.appendChild(row);
+  });
+}
+
+function resetDashboard(){
+  moodHistory=[];
+  localStorage.removeItem('moodHistory');
+  document.getElementById('guidanceBox').innerHTML = "Submit a mood to see your personalized tips, exercises, books, and videos.";
+  updateDashboard();
+}
+
+updateDashboard();
+</script>
+</body>
+</html>
