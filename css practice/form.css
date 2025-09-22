@@ -1,0 +1,111 @@
+*{
+margin:0px;
+padding:0px;
+color:black;
+}
+body{
+    display:flex;
+    height:100%;
+    width:100%;
+    background-color:lavenderblush;
+}
+.area{
+    min-height:150vh;
+    width:80%;
+    background-color: black;
+    display:flex;
+    align-items:center;
+    margin-top: 80px;
+    margin-left:10%;
+    flex-direction:column;
+}
+.head{
+    display:flex;
+    justify-content: center;
+    background-color: cyan;
+    height:17vh;
+    width:45vw;
+    align-items: center;
+    margin-top:70px;
+    overflow:hidden;
+    border-radius:15px;
+    
+    
+}
+h1{
+    font-family:   Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 1000;
+    font-size: 40px;
+    white-space: nowrap;
+    color:navy;
+    margin-left:157%;
+    animation-name:moving;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-delay:0s;
+    animation-duration: 5s;
+}
+
+@keyframes moving{
+    from{
+     margin-left:157%;
+     
+
+    }
+    to{
+        margin-left:-157%;
+        
+     }
+    }
+    h1:hover{
+      animation-play-state: paused;
+      background-color: yellow;
+
+    }
+label{
+    font-size:x-large;
+    font-family:  'Arial Narrow Bold', sans-serif;
+    color:white;
+}
+.formarea{
+    margin-top:80px;
+
+}
+input{
+padding:7px;
+border-radius:13px;
+border: 1px black solid;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+}
+.gender{
+    display:flex;
+    gap:20px;
+}
+
+.element{
+    display: flex;
+    gap:20px;
+    
+    align-items:flex-start;
+}
+select{
+   
+  width: 200px;   
+  height: 40px;  
+  font-size: 16px;
+  padding: 5px 10px; 
+  font-weight: 700;
+}
+.buttons{
+    margin-top:60px;
+    height:40px;
+    width:100px;
+    margin-left:110px;
+    
+
+}
+
