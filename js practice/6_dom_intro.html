@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="background-color: aqua; color:blueviolet;" id="first"> hii i am learing js
+        <span style="display: none;" > hii this is a span</span>
+    </h1>
+    <h2 class="cl"> from coder army</h2>
+
+    <ul>
+        <li>apple</li>
+        <li>mango</li>
+        <li>bannana</li>
+    </ul>
+    <script>
+     let temp=window.document.getElementById("first");
+    //  temp.textContent="this content is changed using js";
+    //  temp.style.backgroundColor="orange";
+
+//      temp.innerHTML
+// ' hii i am learing js\n        <span style="display: none;"> hii this is a span</span>\n    '
+// temp.innerText
+// 'hii i am learing js'
+// temp.textContent
+// ' hii i am learing js\n         hii this is a span\n    '
+
+// let list=document.getElementsByTagName("li")
+// this is the way of accessing any element using tag
+
+
+
+// let el=window.document.getElementsByClassName("cl");
+
+// el[0].style.color="red";
+// 'red'
+
+// this is the example of any element accessed by its class .
+//but here is one change it return arr of all the elements having same class .
+// so we have to use index like[0] to change in one particular element which we dont need in tag name or id selector
+
+document.querySelector("h2");
+let que=document.querySelector(".cl");
+    </script>
+
+
+<!-- que
+<h2 class=​"cl">​ from coder army​</h2>​
+
+que.style.backgroundColor="blue";
+'blue' -->
+
+<!-- this query selector helps us to select element like css by using # with id and . with class -->
+</body>
+</html>
