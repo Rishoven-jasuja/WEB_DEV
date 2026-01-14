@@ -43,3 +43,18 @@ function meet(callback){
     console.log("i have finished my work");
 }
 meet(hello);
+
+function one(){
+    let a =9;
+
+    function add(){
+        a++;
+        console.log(a);
+    }
+    return add;
+}
+
+let check=one();
+check();
+check();
+
