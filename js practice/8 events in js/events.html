@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+  #darkBtn {
+    padding: 12px 26px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    /* background: linear-gradient(135deg, #111827, #374151); */
+    background-color: blanchedalmond;
+    color: rgb(31, 13, 13);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    transition: all 0.25s ease;
+  }
+
+  #darkBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.4);
+    background-color: rgb(12, 205, 141);
+    color:red;
+  }
+</style>
+</head>
+<body style="background-color: black; color:white">
+    <h1 id="first" on="handleclick()"> hello i am learning js for mastery</h1>
+
+    <button id="darkBtn">Dark Mode</button>
+
+<div id="parent">
+  <div id="child1" class="child"  style="background-color: red; height:150px;width:150px; margin-top: 10px;"> first</div>
+    <div id="child2" class="child"  style="background-color: rgb(149, 188, 21); height:150px;width:150px; margin-top: 10px;"> second</div>
+
+      <div id="child3" class="child"  style="background-color: rgb(8, 0, 255); height:150px;width:150px; margin-top: 10px;"> third</div>
+
+        <div id="child4" class="child"  style="background-color: rgb(255, 13, 154); height:150px;width:150px; margin-top: 10px;"> fourth</div>
+
+          <div id="child5" class="child"  style="background-color: rgb(13, 192, 241); height:150px;width:150px; margin-top: 10px;"> five</div>
+
+</div>
+
+</body>
+<script src="events.js"></script>
+</html>
