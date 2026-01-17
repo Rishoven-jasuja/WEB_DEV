@@ -1,0 +1,144 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{ margin:0px;
+           padding:0px;
+
+        }
+        #parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  font-size: 60px;
+  font-family: 'Courier New', monospace;
+  background-color: black;
+  color: lime;
+
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+}
+
+    </style>
+</head>
+<body>
+    <div id="parent"> </div>
+
+
+    <script src="digital_clock.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modern Digital Clock</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .clock-container {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 40px 60px;
+      border-radius: 20px;
+      
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .clock {
+      font-size: 64px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+
+    .colon {
+      animation: blink 1s infinite;
+    }
+
+    #ampm {
+      font-size: 20px;
+      margin-left: 10px;
+      color: #00e5ff;
+    }
+
+    .date {
+      margin-top: 12px;
+      font-size: 18px;
+      color: #d1d1d1;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% {
+        opacity: 1;
+      }
+      25%, 75% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clock-container">
+    <div class="clock">
+      <span id="hours">00</span>
+      <span class="colon">:</span>
+      <span id="minutes">00</span>
+      <span class="colon">:</span>
+      <span id="seconds">00</span>
+      <span id="ampm">AM</span>
+    </div>
+    <div class="date" id="date"></div>
+  </div>
+
+  <script>
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+    const ampmEl = document.getElementById("ampm");
+    const dateEl = document.getElementById("date");
+
+    function updateClock() {
+      const now = new Date();
+
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+
+      const ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+
+      hoursEl.textContent = String(hours).padStart(2, "0");
+      minutesEl.textContent = String(minutes).padStart(2, "0");
+      secondsEl.textContent = String(seconds).padStart(2, "0");
+      ampmEl.textContent = ampm;
+
+      dateEl.textContent = now.toDateString();
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
+</body>
+</html>
