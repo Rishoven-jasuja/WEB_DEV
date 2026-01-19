@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #form{
+            background-color:cadetblue;
+            color:black;
+            min-height:70vh;
+            height: auto;
+            width:70vw;
+            border-radius:20px;
+            /* position:absolute; */
+
+        }
+        input{
+            height:40px;
+            width:300px;
+            border-radius: 10px;
+            margin:50px;
+            padding-left:100px;
+
+        }
+        button{
+            width:120px;
+            height:50px;
+            padding:10px;
+            background-color: darkgrey;
+            color:honeydew;
+            border-radius:40px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
+            font-weight: bolder;
+        }
+
+        #alltask{
+            position:relative;
+            left: 13%;
+            min-height: 40vh;
+            height: auto;
+            width: 50vw;
+            background-color: khaki;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+    </style>
+</head>
+<body style="background-color: black ; color:white; display:flex;flex-direction: column; justify-content: center; align-items: center;">
+    <h1> To-do list</h1>
+
+    <form id="form">
+        <input type="text" name="task" id="task" placeholder="enter a new task here" required>
+        <button type="submit" >create task</button>
+    
+
+    <div id="alltask"></div>
+    </form>
+</body>
+<script src="to_do_list.js"></script>
+</html>
