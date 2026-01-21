@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   <style>
+    .card{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        height: 400px;
+        width:300px;
+        background-color: gainsboro;
+        flex-direction: column;
+        font-size: large;
+        border-radius: 20px;
+        
+  transition: transform 1s ease, box-shadow 0.3s ease;
+    }
+    .card:hover{
+       transform: scale(1.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    img{
+        height: 200px;
+        width:200px;
+    }
+    a{
+  margin-top:10px;
+  padding:8px 12px;
+  background:#24292e;
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+}
+a:hover{
+  background:#000;
+  box-shadow: 3px 6px blue;
+}
+
+   </style>
+</head>
+<body style="background-color: black; display: flex; justify-content: center; align-items: center; min-height: 100vh; flex-direction: column;">
+    <h1> Github users info</h1>
+    <div id="parent" style="background-color:grey ;min-height: 70vh;height: auto; display: flex; justify-content: space-around;  width:80vw; gap:30px ;flex-wrap: wrap; " ></div>
+</body>
+<script src="11_async_await.js"></script>
+</html>
