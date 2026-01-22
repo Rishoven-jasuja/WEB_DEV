@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random password genrator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color:lightgrey;
+            justify-content: center;
+            display:flex;
+            align-items: center;
+            height: 100vh;
+            width:100vw;
+            
+
+        }
+        #parent{
+            background-color:rgb(125, 194, 156);
+            height: 40vh;
+            width:50vw;
+            border-radius: 20px;
+            padding:15px;
+            text-align: center;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            justify-content: center;
+            display:flex;
+            align-items: center;
+            flex-direction: column;
+            gap:30px;
+        }
+        #passarea{
+            height: 45px;
+            width:600px;
+            border: 2px solid black;
+            color:darkslategrey;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 0 15px;
+            
+        }
+        button{
+            height: 40px;
+            width: 120px;
+            background-color:slategray;
+            color:bisque;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: large;
+            font-weight: bold;
+            border-radius: 20px;
+             transition: 
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+    
+        }   
+        button:hover{
+        
+  background-color: #556b78;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+#copy{
+cursor: pointer;
+  font-size: 18px;
+  color: slategray;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+#copy:hover{
+  color: black;
+  transform: scale(1.1);
+}
+#password {
+  flex: 1;
+  letter-spacing: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.alert{
+    position:fixed;
+    width: 300px;
+    height: 50px;
+    background-color:rgb(160, 160, 255);
+    right:-300px;
+    bottom:25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    
+}
+    .alert.show{
+        right:30px;
+    }
+    </style>
+</head>
+<body>
+    <div id="parent"> 
+        <h2>Random Password Generator</h2>
+        <div id="passarea">
+            <span id="password">click generate for new password 👇👇</span>
+            <i id="copy" class="fa-solid fa-copy"></i>
+        </div>
+        <button id="generate">Generate</button>
+
+
+        <div  class="alert ">Password copied </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
