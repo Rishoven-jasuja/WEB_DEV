@@ -1,0 +1,299 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    
+
+}
+.namebar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:10vh;
+    background-color: darkcyan;
+    width:100%;
+    color:cornsilk;
+    font-size: larger;
+  
+}
+.navbar{
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    width:70vw;
+   
+    align-items: center;
+}
+
+    ul{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+
+
+}
+
+    
+
+li{
+     background-color: rgb(230, 229, 229);
+     padding:10px;
+     border-radius: 10px;
+
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    margin:50px;
+    justify-content: space-around;
+    gap:50px;
+
+}
+
+ .card {
+    display: flex;           
+    flex-direction: column;   
+    justify-content: space-between; 
+    height: 380px;            
+    width: 400px;
+    background-color: rgb(236, 239, 239);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease-in-out,
+              
+              box-shadow 0.3s ease-in-out;
+    
+}
+
+.img{
+height:170px;
+width:400px;
+background-color: rgb(31, 29, 29);
+object-fit: cover;
+}
+h3{
+    font-weight: 500;
+    padding-left: 20px;
+    margin-top: 15px;
+    font-size: medium;
+}
+p{
+    font-weight: 300;
+    padding-left: 20px;
+    margin-top: 15px;
+    font-size: medium;
+}
+
+.btn{
+    padding: 8px;
+    background-color: darkcyan;
+    color:cornsilk;
+    margin: 14px;
+    margin-left: 20px;
+border: none;
+outline: none;
+border-radius: 7px;
+}
+
+.card:hover{
+transform: translateY(-5%) scale(1.05);
+
+box-shadow: 2px 4px 6px darkcyan;
+}
+.card{
+    width: min(400px, 90vw);
+}
+
+li{
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+li:hover{
+    background-color: rgb(12, 13, 13);
+    color: cornsilk;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0,0.35);
+}
+
+li{
+    padding: 8px 14px;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    white-space: nowrap;
+}
+
+.card p {
+    font-weight: 300;
+    padding-left: 20px;
+    margin-top: 15px;
+    font-size: medium;
+    
+    max-height: 50px;      
+    overflow: hidden;      
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;  
+    -webkit-box-orient: vertical;
+}
+
+.active {
+    background-color: darkcyan;
+    color: cornsilk;
+}
+
+
+/* fade in */
+.card {
+  opacity: 0;               /* start invisible */
+  transform: translateY(20px);  /* slight move from bottom */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* class to trigger fade-in */
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.menu-button{
+    position: absolute;
+    left: 30px;
+    
+    color: cornsilk;
+    cursor: pointer;
+    width:30px;
+    
+}
+
+.sidebar{
+
+
+ position: fixed;
+  top: 0;
+  left: -400px;
+  width: 240px;
+  height: 100vh;
+  background-color: darkcyan;
+  color: white;
+  padding: 20px;
+  transition: left 0.5s ease;
+  z-index: 1000;
+
+  display: flex;
+flex-direction: column;
+
+
+overflow: hidden;
+
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.sidebar h3 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 10px;
+}
+
+
+.sidelist{
+    display:flex;
+    flex-direction: column;
+    flex: 1;
+
+    width:100%;
+    box-sizing: border-box;
+
+}
+.sidelist li{
+    background:none;
+    
+     border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-radius: 0px;
+      padding: 12px 0;
+  cursor: pointer;
+  transition: padding-left 0.2s, background 0.2s;
+ width:100%;
+    text-overflow: ellipsis;
+
+}
+.sidelist li:hover{
+    box-shadow: 0px 1px 2px cornsilk;
+    padding-left: 8px;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.show{
+    left:0px;
+}
+
+
+
+.resize-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  cursor: ew-resize;
+  background: rgba(255,255,255,0.3);
+}
+
+
+.dark-mode-toggle{
+    position:absolute;
+    top:10px;
+    right:30px;
+}
+.dark-mode-toggle svg {
+  transition: all 0.5s ease;
+  color: gold; /* Sun color by default */
+}
+
+.dark-mode-toggle.dark svg {
+  transform: rotate(180deg);
+  color: #f1f1f1; /* Moon color */
+}
+
+.dark-mode-toggle svg .rays {
+  transition: all 0.5s ease;
+}
+
+.dark-mode-toggle.dark svg .rays {
+  opacity: 0; /* Hide sun rays in dark mode */
+}
+
+body.dark {
+  background-color: #111;
+  color: #eee;
+}
+
+body.dark .card {
+  background-color: #222;
+}
+body.dark #topul li{
+    background-color: grey;
+    color:cornsilk
+}
