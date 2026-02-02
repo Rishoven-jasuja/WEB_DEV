@@ -124,8 +124,9 @@ li{
 }
 
 li:hover{
-    background-color: rgb(12, 13, 13);
-    color: cornsilk;
+ background-color:  #7b2d26;
+
+     color: cornsilk;
     box-shadow: 2px 2px 4px rgb(0, 0, 0,0.35);
 }
 
@@ -191,13 +192,15 @@ li{
   color: white;
   padding: 20px;
   transition: left 0.5s ease;
-  z-index: 1000;
+  z-index: 500;
 
   display: flex;
 flex-direction: column;
 
 
 overflow: hidden;
+text-overflow: ellipsis;
+
 
 }
 
@@ -293,7 +296,34 @@ body.dark {
 body.dark .card {
   background-color: #222;
 }
-body.dark #topul li{
-    background-color: grey;
-    color:cornsilk
+
+body.dark #topul{
+    color:black;
+}
+
+
+/* loader designing */
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ddd;
+  border-top: 5px solid darkcyan;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+ 
+  
+  display: none;
+  z-index: 2000;
+}
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

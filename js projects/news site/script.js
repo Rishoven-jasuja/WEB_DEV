@@ -1,8 +1,8 @@
 window.addEventListener("DOMContentLoaded"
 , () => {
     
-// const api_key="9ddcaf03504804bea2dd52671f8455f9";
-const api_key="ed096ee77c5183c9e82d27608616b041";
+ const api_key="9ddcaf03504804bea2dd52671f8455f9";
+// const api_key="ed096ee77c5183c9e82d27608616b041";
 const container=document.querySelector(".container");
 
 
@@ -10,18 +10,22 @@ let gen=document.getElementById('gen');
     gen.classList.add('active');
 
 
+const loader=document.querySelector('.loader');
+
 async function get_news(category="general"){
  
     const url = `https://gnews.io/api/v4/top-headlines?country=in&lang=en&category=${category}&apikey=${api_key}`;
 
 
     try{
-
+      container.innerHTML="";
+     loader.style.display="block";
 
 const response=await fetch(url);
     const data=await response.json();
   console.log(data.articles);
-    container.innerHTML="";
+
+  
      // clearing previous cards
 
     data.articles.forEach(news => {
@@ -61,6 +65,11 @@ setTimeout(() => {
     catch (err) {
     console.error("Error:", err);
   }
+  finally {
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 200);
+}
 }
 
 
@@ -80,11 +89,6 @@ categories.addEventListener("click",(e)=>{
   
 })
 
-});
-
-// now we will handle side bar functionality
-
-// menubutton access
 const menu=document.querySelector('.menu-button');
 
 //side bar access
@@ -118,7 +122,7 @@ document.addEventListener("mousemove",(e)=>{
       width=300; // the maxwidth is declared 
 
     }
-    if(width<120){
+    if(width<90){
       sidebar.classList.remove('show');
       resize=false;
       return;
@@ -141,4 +145,8 @@ darkToggle.addEventListener("click", () => {
   body.classList.toggle("dark"); // dark mode colors
   darkToggle.classList.toggle("dark"); // animate icon
 });
+
+
+});
+
 
