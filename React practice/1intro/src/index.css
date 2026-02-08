@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+body{
+  background-color: black;;
+  color:white;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height:10vh;
+  background-color: bisque;
+  color:blue;
+  position: absolute;
+  top:0px;
+  left:0px;
+}
+li{
+  list-style: none;
+}
+ul{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+}
+.card{
+  width: 400px;
+  height: 200px;
+  background-color: cornflowerblue;
+  color:yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid white;
+  margin-top: 10vh;
+}
