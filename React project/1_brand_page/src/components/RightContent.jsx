@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect,useRef, useCallback } from "react";
 
 const RightContent = ({className}) => {
 
@@ -24,12 +24,12 @@ const touchEndX = useRef(0);
 //these are used for sliding on mobile with finger 
 
 // useref are used to store any value but dont do any re render of our page unlike the usestate
-  const nextidx=()=>{
+  const nextidx = useCallback(() => {
       setidx(prev=>(prev+1)%arr.length);
-  }
-  const previdx=()=>{
+  }, [arr.length]);
+  const previdx = useCallback(() => {
     setidx(prev=>(prev-1+arr.length)%arr.length);
-  }
+  }, [arr.length]);
 
 
   const handleTouchStart = (e) => {
@@ -54,7 +54,7 @@ const handleSwipe = () => {
     const interval = setInterval(nextidx, 2500);
 
     return () => clearInterval(interval); // cleanup
-  }, [pause]);
+  }, [pause, nextidx]);
 
 
   return (
