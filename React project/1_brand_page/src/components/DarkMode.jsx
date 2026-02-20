@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const DarkMode = () => {
-  const [dark, setDark] = useState(false);
+  const [dark, setdark] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
-  const toggleDark = () => {
-    setDark(!dark);
-    document.body.classList.toggle("dark");
-  };
+  useEffect(() => {
+    if (dark) {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [dark]);
 
   return (
     <button
-      onClick={toggleDark}
+      onClick={() => setdark(!dark)}
       className="fixed right-4 top-48 p-3 rounded-full bg-red-600 text-white shadow-lg hover:scale-110 transition z-50"
     >
       {dark ? <MdLightMode size={22} /> : <MdDarkMode size={22} />}

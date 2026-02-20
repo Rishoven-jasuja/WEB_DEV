@@ -6,23 +6,23 @@ const LeftContent = ({ className }) => {
       className={`w-full md:w-[55vw] min-h-screen flex flex-col justify-center px-6 md:px-16 ${className}`}
     >
       {/* Heading */}
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] tracking-wide text-center md:text-left">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-15 md:leading-[1.1] tracking-wide text-center md:text-left sm:-mt-17">
         YOUR FEET DESERVES THE BEST
       </h1>
 
       {/* Paragraph */}
-      <p className="mt-5 text-center md:text-left max-w-xl">
+      <p className="mt-10 text-center md:text-left max-w-xl lg:mt-10">
         Your feet deserve the best and we are here to help you with our
         shoes. Experience comfort, performance and style together.
       </p>
 
       {/* Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 mt-8 items-center md:items-start">
+      <div className="flex  gap-3 mt-8 items-start justify-center  lg:justify-start">
         <button
           className="bg-red-600 text-white text-lg px-7 py-3 rounded-xl
           transition-all duration-200 ease-out
           hover:bg-red-700 hover:shadow-lg hover:-translate-y-1
-          active:scale-95"
+          active:scale-95 text-nowrap"
         >
           Shop Now
         </button>

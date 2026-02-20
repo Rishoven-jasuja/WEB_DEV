@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import vid from "../assets/vid.mp4"
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,9 +23,9 @@ const Login = () => {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Left Video Section */}
-      <div className="lg:w-1/2 relative h-64 lg:h-screen overflow-hidden">
+      <div className="lg:w-1/2 relative h-72 lg:h-screen overflow-hidden">
         <video
-          src="https://www.pexels.com/download/video/4380323/"
+          src={vid}
           autoPlay
           loop
           muted
@@ -46,9 +46,9 @@ const Login = () => {
 
       {/* Right Form Section */}
       <div className="lg:w-1/2 flex items-center justify-center p-6 bg-gray-100 lg:bg-transparent">
-        <form
+        <form id="form"
           onSubmit={handleSubmit}
-          className="bg-white lg:bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-2xl w-full max-w-md animate-fadeIn"
+          className="bg-white lg:bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-2xl w-full max-w-md animate-fadeIn flex-1 "
         >
           <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">
             Login
@@ -67,15 +67,15 @@ const Login = () => {
           />
 
           <div className="relative mb-6">
-            <input
+            <input  
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+              className="w-full p-4 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition "
             />
             <span
-              className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+              className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-black"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? "Hide" : "Show"}

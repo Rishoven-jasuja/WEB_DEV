@@ -20,3 +20,25 @@ body.dark {
 body.dark #logo{
 background-color: white;
 }
+
+.hidenav{
+  display:none;
+}
+
+body.dark #form{
+  background-color: black;
+  color:white;
+}
+
+
+body.dark #form h2,
+body.dark #form p,
+body.dark #form span {
+  color: white;
+}
+
+body.dark #form input {
+  background-color: #222;
+  color: white;
+  border-color: #555;
+}
