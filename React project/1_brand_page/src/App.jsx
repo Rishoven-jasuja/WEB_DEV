@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Hero from "./components/hero";
 import DarkMode from "./components/DarkMode";
 import Login from "./components/Login";
 import { Analytics } from "@vercel/analytics/react"
