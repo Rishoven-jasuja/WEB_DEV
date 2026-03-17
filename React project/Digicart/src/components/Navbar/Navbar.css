@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    font-family: 'Ubuntu',sans-serif;
+}
+.nav-list{
+    list-style: none;
+}
+.signbtn{
+    width: 100px;
+    
+    
+    padding:5px 12px;
+    margin:4px;
+    border-radius: 12px;
+      background-color: transparent;
+  color: #1d4ed8;
+  border: 2px solid #1d4ed8;
+  transition: 0.3s;
+  cursor:hover;
+}
+    
+
+
+
+.signbtn:hover {
+  background-color: #7e9df2;
+  color: white;
+}
+.btns{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    gap:10px;
+
+
+}
+.carticon{
+    font-size: 30px;
+    cursor:pointer;
+}
+
+.navlogo{
+    font-family: 'Lobster', cursive;
+}
+
+.nav-list li:hover{
+    color:#4b619e;
+    
+}

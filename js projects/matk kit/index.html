@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discrete Mathematics Toolkit</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: JetBrains Mono (code feel) + Sora (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MOBILE TOPBAR
+  ═══════════════════════════════════════════════════════════ -->
+  <header class="topbar" id="topbar">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="topbar-brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <span>DM Toolkit</span>
+    </div>
+    <div class="topbar-module-indicator" id="topbarIndicator">Sets</div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SIDEBAR OVERLAY (mobile)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYOUT WRAPPER
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="app-layout">
+
+    <!-- ─────────────────────────────────────────────────────────
+         SIDEBAR
+    ───────────────────────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar">
+
+      <!-- Brand -->
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">DM Toolkit</span>
+          <span class="brand-sub">Discrete Mathematics</span>
+        </div>
+      </div>
+
+      <!-- Navigation Label -->
+      <p class="nav-label">MODULES</p>
+
+      <!-- Nav Links -->
+      <nav class="sidebar-nav" id="sidebarNav">
+
+        <button class="nav-item active" data-module="sets">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="12" r="7"/><circle cx="15" cy="12" r="7"/></svg>
+          </span>
+          <span class="nav-label-text">Set Operations</span>
+          <span class="nav-tag">01</span>
+        </button>
+
+        <button class="nav-item" data-module="truth">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+          </span>
+          <span class="nav-label-text">Truth Tables</span>
+          <span class="nav-tag">02</span>
+        </button>
+
+        <button class="nav-item" data-module="permcomb">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+          </span>
+          <span class="nav-label-text">P &amp; C Calculator</span>
+          <span class="nav-tag">03</span>
+        </button>
+
+        <button class="nav-item" data-module="graph">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </span>
+          <span class="nav-label-text">Graph Tool</span>
+          <span class="nav-tag">04</span>
+        </button>
+
+      </nav>
+
+      <!-- Divider -->
+      <div class="sidebar-divider"></div>
+
+      <!-- How to Use -->
+      <button class="nav-item" data-module="help">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
+        <span class="nav-label-text">How to Use</span>
+      </button>
+
+      <!-- Footer -->
+      <div class="sidebar-footer">
+        <span>v1.0.0</span>
+        <span class="footer-dot">·</span>
+        <span>Pure JS</span>
+      </div>
+
+    </aside>
+
+    <!-- ─────────────────────────────────────────────────────────
+         MAIN CONTENT
+    ───────────────────────────────────────────────────────── -->
+    <main class="main-content" id="mainContent">
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="spinner"></div>
+        <p>Computing…</p>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           MODULE 1 — SET OPERATIONS
+      ══════════════════════════════════════ -->
+      <section class="module active" id="module-sets">
+
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-number">01</span>
+            <div>
+              <h1 class="module-title">Set Operations</h1>
+              <p class="module-desc">Compute union, intersection, and difference between two sets</p>
+            </div>
+          </div>
+          <button class="btn btn-ghost" id="setsReset">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.4"/></svg>
+            Reset
+          </button>
+        </div>
+
+        <!-- Inputs -->
+        <div class="card">
+          <div class="card-body input-row">
+            <div class="input-group">
+              <label class="input-label">Set A <span class="tooltip-anchor" data-tip="Enter values separated by commas. Example: 1, 2, 3, apple">?</span></label>
+              <input type="text" class="text-input" id="setA" placeholder="e.g. 1, 2, 3, 4" autocomplete="off" />
+            </div>
+            <div class="input-group">
+              <label class="input-label">Set B <span class="tooltip-anchor" data-tip="Enter values separated by commas. Example: 3, 4, 5, 6">?</span></label>
+              <input type="text" class="text-input" id="setB" placeholder="e.g. 3, 4, 5, 6" autocomplete="off" />
+            </div>
+          </div>
+          <div class="card-footer">
+            <p class="error-msg" id="setsError"></p>
+            <button class="btn btn-primary" id="setsCompute">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Compute
+            </button>
+            <button class="btn btn-ghost" id="setsClear">Clear</button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results-grid" id="setsResults" style="display:none;">
+
+          <!-- Venn Diagram -->
+          <div class="card card-full">
+            <div class="card-header"><h3>Venn Diagram</h3></div>
+            <div class="card-body venn-container">
+              <canvas id="vennCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Result Cards -->
+          <div class="card result-card" id="resUnion">
+            <div class="card-header"><span class="result-badge badge-union">A ∪ B</span><h3>Union</h3></div>
+            <div class="card-body"><p class="result-set" id="unionResult"></p></div>
+            <div class="card-footer result-count">Size: <strong id="unionCount">0</strong></div>
+          </div>
+
+          <div class="card result-card" id="resIntersection">
+            <div class="card-header"><span class="result-badge badge-inter">A ∩ B</span><h3>Intersection</h3></div>
+            <div class="card-body"><p class="result-set" id="intersectionResult"></p></div>
+            <div class="card-footer result-count">Size: <strong id="intersectionCount">0</strong></div>
+          </div>
+
+          <div class="card result-card" id="resDiffAB">
+            <div class="card-header"><span class="result-badge badge-diff">A − B</span><h3>Difference A−B</h3></div>
+            <div class="card-body"><p class="result-set" id="diffABResult"></p></div>
+            <div class="card-footer result-count">Size: <strong id="diffABCount">0</strong></div>
+          </div>
+
+          <div class="card result-card" id="resDiffBA">
+            <div class="card-header"><span class="result-badge badge-diff2">B − A</span><h3>Difference B−A</h3></div>
+            <div class="card-body"><p class="result-set" id="diffBAResult"></p></div>
+            <div class="card-footer result-count">Size: <strong id="diffBACount">0</strong></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+           MODULE 2 — TRUTH TABLES
+      ══════════════════════════════════════ -->
+      <section class="module" id="module-truth">
+
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-number">02</span>
+            <div>
+              <h1 class="module-title">Truth Table Generator</h1>
+              <p class="module-desc">Enter a Boolean expression and generate a complete truth table</p>
+            </div>
+          </div>
+          <button class="btn btn-ghost" id="truthReset">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.4"/></svg>
+            Reset
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="input-group full-width">
+              <label class="input-label">
+                Boolean Expression
+                <span class="tooltip-anchor" data-tip="Use: AND, OR, NOT, XOR, NAND, NOR. Variables: single letters A–Z. Example: (A AND B) OR NOT C">?</span>
+              </label>
+              <input type="text" class="text-input mono" id="truthExpr" placeholder="e.g.  (A AND B) OR NOT C" autocomplete="off" />
+            </div>
+            <!-- Operator Quick-Insert -->
+            <div class="op-buttons">
+              <button class="op-btn" data-op="AND"> AND </button>
+              <button class="op-btn" data-op="OR"> OR </button>
+              <button class="op-btn" data-op="NOT "> NOT </button>
+              <button class="op-btn" data-op="XOR"> XOR </button>
+              <button class="op-btn" data-op="NAND"> NAND </button>
+              <button class="op-btn" data-op="NOR"> NOR </button>
+              <button class="op-btn" data-op="(">( </button>
+              <button class="op-btn" data-op=")"> )</button>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p class="error-msg" id="truthError"></p>
+            <button class="btn btn-primary" id="truthGenerate">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Generate Table
+            </button>
+            <button class="btn btn-ghost" id="truthClear">Clear</button>
+          </div>
+        </div>
+
+        <div class="card" id="truthTableCard" style="display:none;">
+          <div class="card-header table-header-row">
+            <h3>Truth Table</h3>
+            <span class="row-count" id="truthRowCount"></span>
+          </div>
+          <div class="card-body table-scroll">
+            <table class="truth-table" id="truthTable"></table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ══════════════════════════════════════
+           MODULE 3 — PERMUTATION & COMBINATION
+      ══════════════════════════════════════ -->
+      <section class="module" id="module-permcomb">
+
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-number">03</span>
+            <div>
+              <h1 class="module-title">Permutation &amp; Combination</h1>
+              <p class="module-desc">Calculate nPr and nCr with step-by-step formulas</p>
+            </div>
+          </div>
+          <button class="btn btn-ghost" id="pcReset">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.4"/></svg>
+            Reset
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-body input-row">
+            <div class="input-group">
+              <label class="input-label">n (total items) <span class="tooltip-anchor" data-tip="Total number of items in the set. Must be a non-negative integer.">?</span></label>
+              <input type="number" class="text-input" id="pcN" placeholder="e.g. 10" min="0" max="20" />
+            </div>
+            <div class="input-group">
+              <label class="input-label">r (items chosen) <span class="tooltip-anchor" data-tip="Number of items to select or arrange. Must satisfy 0 ≤ r ≤ n.">?</span></label>
+              <input type="number" class="text-input" id="pcR" placeholder="e.g. 3" min="0" max="20" />
+            </div>
+          </div>
+          <div class="card-footer">
+            <p class="error-msg" id="pcError"></p>
+            <button class="btn btn-primary" id="pcCompute">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2h11"/></svg>
+              Calculate
+            </button>
+            <button class="btn btn-ghost" id="pcClear">Clear</button>
+          </div>
+        </div>
+
+        <!-- PC Results -->
+        <div class="pc-results" id="pcResults" style="display:none;">
+
+          <div class="card pc-card">
+            <div class="pc-card-accent accent-perm"></div>
+            <div class="card-body">
+              <div class="pc-label">Permutation</div>
+              <div class="pc-formula" id="permFormula"></div>
+              <div class="pc-steps" id="permSteps"></div>
+              <div class="pc-answer" id="permAnswer"></div>
+            </div>
+          </div>
+
+          <div class="card pc-card">
+            <div class="pc-card-accent accent-comb"></div>
+            <div class="card-body">
+              <div class="pc-label">Combination</div>
+              <div class="pc-formula" id="combFormula"></div>
+              <div class="pc-steps" id="combSteps"></div>
+              <div class="pc-answer" id="combAnswer"></div>
+            </div>
+          </div>
+
+          <!-- Factorial Reference -->
+          <div class="card card-full">
+            <div class="card-header"><h3>Factorial Reference</h3></div>
+            <div class="card-body factorial-row" id="factorialRow"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ══════════════════════════════════════
+           MODULE 4 — GRAPH TOOL
+      ══════════════════════════════════════ -->
+      <section class="module" id="module-graph">
+
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-number">04</span>
+            <div>
+              <h1 class="module-title">Graph Tool</h1>
+              <p class="module-desc">Add nodes and edges, then find the shortest path with Dijkstra's algorithm</p>
+            </div>
+          </div>
+          <button class="btn btn-ghost" id="graphReset">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.4"/></svg>
+            Reset
+          </button>
+        </div>
+
+        <div class="graph-layout">
+
+          <!-- Left Panel: Inputs -->
+          <div class="graph-input-col">
+
+            <!-- Add Node -->
+            <div class="card">
+              <div class="card-header"><h3>Add Node</h3></div>
+              <div class="card-body input-row-sm">
+                <input type="text" class="text-input" id="nodeId" placeholder="Node name (e.g. A)" maxlength="10" autocomplete="off" />
+                <button class="btn btn-primary compact" id="addNodeBtn">Add</button>
+              </div>
+            </div>
+
+            <!-- Add Edge -->
+            <div class="card">
+              <div class="card-header"><h3>Add Edge</h3></div>
+              <div class="card-body">
+                <div class="input-row-sm">
+                  <input type="text" class="text-input" id="edgeFrom" placeholder="From" maxlength="10" autocomplete="off" />
+                  <input type="text" class="text-input" id="edgeTo" placeholder="To" maxlength="10" autocomplete="off" />
+                  <input type="number" class="text-input w-sm" id="edgeWeight" placeholder="Weight" min="1" value="1" />
+                </div>
+                <button class="btn btn-primary" id="addEdgeBtn" style="margin-top:.75rem;width:100%;">Add Edge</button>
+              </div>
+              <p class="error-msg padded" id="graphEdgeError"></p>
+            </div>
+
+            <!-- Dijkstra -->
+            <div class="card">
+              <div class="card-header"><h3>Shortest Path (Dijkstra)</h3></div>
+              <div class="card-body input-row-sm">
+                <input type="text" class="text-input" id="dijkstraFrom" placeholder="Source" maxlength="10" autocomplete="off" />
+                <input type="text" class="text-input" id="dijkstraTo" placeholder="Target" maxlength="10" autocomplete="off" />
+              </div>
+              <div class="card-footer">
+                <p class="error-msg" id="graphDijkError"></p>
+                <button class="btn btn-primary" id="dijkstraBtn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Find Path
+                </button>
+              </div>
+            </div>
+
+            <!-- Dijkstra Result -->
+            <div class="card dijkstra-result-card" id="dijkstraResult" style="display:none;">
+              <div class="card-header"><h3>Result</h3></div>
+              <div class="card-body">
+                <div class="path-display" id="pathDisplay"></div>
+                <div class="distance-display">
+                  <span class="distance-label">Total Distance:</span>
+                  <span class="distance-value" id="distanceValue"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Node/Edge List -->
+            <div class="card">
+              <div class="card-header"><h3>Graph Data</h3></div>
+              <div class="card-body">
+                <div class="graph-data-section">
+                  <p class="data-sublabel">Nodes</p>
+                  <div class="tag-list" id="nodeList"><span class="empty-hint">No nodes yet</span></div>
+                </div>
+                <div class="graph-data-section" style="margin-top:1rem;">
+                  <p class="data-sublabel">Edges</p>
+                  <div class="edge-list" id="edgeList"><span class="empty-hint">No edges yet</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Panel: Canvas -->
+          <div class="graph-canvas-col">
+            <div class="card graph-canvas-card">
+              <div class="card-header"><h3>Graph Visualizer</h3><span class="canvas-hint">Drag nodes to reposition</span></div>
+              <div class="card-body">
+                <canvas id="graphCanvas"></canvas>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ══════════════════════════════════════
+           MODULE 5 — HELP / HOW TO USE
+      ══════════════════════════════════════ -->
+      <section class="module" id="module-help">
+
+        <div class="module-header">
+          <div class="module-header-left">
+            <span class="module-number">?</span>
+            <div>
+              <h1 class="module-title">How to Use</h1>
+              <p class="module-desc">A quick guide to every module in this toolkit</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="help-grid">
+
+          <div class="help-card card">
+            <div class="help-card-icon icon-sets">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="12" r="7"/><circle cx="15" cy="12" r="7"/></svg>
+            </div>
+            <h3>01 · Set Operations</h3>
+            <ol>
+              <li>Enter elements for Set A as comma-separated values (e.g. <code>1, 2, 3</code>).</li>
+              <li>Enter elements for Set B similarly.</li>
+              <li>Click <strong>Compute</strong> to see Union, Intersection, A−B, B−A and an animated Venn diagram.</li>
+              <li>Use <strong>Clear</strong> to wipe inputs and <strong>Reset</strong> to restore defaults.</li>
+            </ol>
+          </div>
+
+          <div class="help-card card">
+            <div class="help-card-icon icon-truth">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+            </div>
+            <h3>02 · Truth Table Generator</h3>
+            <ol>
+              <li>Type a Boolean expression using operators: <code>AND</code>, <code>OR</code>, <code>NOT</code>, <code>XOR</code>, <code>NAND</code>, <code>NOR</code>.</li>
+              <li>Variables are single uppercase letters (A–Z).</li>
+              <li>Use operator quick-insert buttons below the field for convenience.</li>
+              <li>Click <strong>Generate Table</strong> — all combinations are computed automatically.</li>
+              <li>The output column is highlighted in gold.</li>
+            </ol>
+          </div>
+
+          <div class="help-card card">
+            <div class="help-card-icon icon-pc">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+            </div>
+            <h3>03 · Permutation &amp; Combination</h3>
+            <ol>
+              <li>Enter <strong>n</strong> (total items) and <strong>r</strong> (items to choose/arrange).</li>
+              <li>Click <strong>Calculate</strong> to see nPr and nCr results.</li>
+              <li>Formulas and intermediate steps are displayed for clarity.</li>
+              <li>A factorial reference table is also shown.</li>
+              <li><strong>Constraint:</strong> 0 ≤ r ≤ n ≤ 20.</li>
+            </ol>
+          </div>
+
+          <div class="help-card card">
+            <div class="help-card-icon icon-graph">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <h3>04 · Graph Tool</h3>
+            <ol>
+              <li>Add <strong>nodes</strong> by typing a name and clicking Add.</li>
+              <li>Add <strong>edges</strong> by specifying From, To, and Weight (default 1).</li>
+              <li>The graph renders live on the canvas. Drag nodes to reposition.</li>
+              <li>Enter Source and Target nodes, then click <strong>Find Path</strong> to run Dijkstra's algorithm.</li>
+              <li>The shortest path and total distance are displayed, and the path is highlighted on the canvas.</li>
+            </ol>
+          </div>
+
+        </div>
+
+        <!-- Operators Reference -->
+        <div class="card" style="margin-top:2rem;">
+          <div class="card-header"><h3>Boolean Operator Reference</h3></div>
+          <div class="card-body">
+            <table class="ref-table">
+              <thead><tr><th>Keyword</th><th>Symbol</th><th>Description</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td><code>AND</code></td><td>∧</td><td>Both conditions true</td><td><code>A AND B</code></td></tr>
+                <tr><td><code>OR</code></td><td>∨</td><td>At least one true</td><td><code>A OR B</code></td></tr>
+                <tr><td><code>NOT</code></td><td>¬</td><td>Negates a value</td><td><code>NOT A</code></td></tr>
+                <tr><td><code>XOR</code></td><td>⊕</td><td>Exactly one true</td><td><code>A XOR B</code></td></tr>
+                <tr><td><code>NAND</code></td><td>↑</td><td>NOT (A AND B)</td><td><code>A NAND B</code></td></tr>
+                <tr><td><code>NOR</code></td><td>↓</td><td>NOT (A OR B)</td><td><code>A NOR B</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+    </main><!-- /main-content -->
+  </div><!-- /app-layout -->
+
+  <!-- Tooltip Element (global, moved by JS) -->
+  <div class="tooltip-box" id="tooltipBox"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
