@@ -13,6 +13,67 @@
 <body>
 
   <!-- ═══════════════════════════════════════════════════════════
+       LANDING SCREEN
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="landing-screen" id="landingScreen" role="dialog" aria-modal="true" aria-label="Welcome">
+    <div class="landing-content">
+      <div class="landing-hero">
+        <div class="landing-header">
+          <h1>Discrete Mathematics Toolkit</h1>
+          <p class="landing-subtitle">A single dashboard for sets, logic, permutations &amp; graphs — built to teach and explore quickly.</p>
+        </div>
+
+        <div class="landing-actions">
+          <label class="landing-checkbox">
+            <input type="checkbox" id="landingSkip" />
+            <span>Don't show this landing page again</span>
+          </label>
+          <button class="btn btn-primary" id="landingEnter">Continue</button>
+          <p class="landing-footnote">Tip: Use 1–4 or the sidebar to switch tools anytime.</p>
+        </div>
+      </div>
+
+      <div class="landing-features">
+        <div class="landing-feature">
+          <div class="landing-feature-icon">∪</div>
+          <div class="landing-feature-body">
+            <h2>Set Operations</h2>
+            <p>Compute union, intersection, difference and visualize with a Venn diagram.</p>
+          </div>
+          <button class="btn btn-ghost landing-nav" data-module="sets">Open</button>
+        </div>
+
+        <div class="landing-feature">
+          <div class="landing-feature-icon">∧</div>
+          <div class="landing-feature-body">
+            <h2>Truth Tables</h2>
+            <p>Generate full truth tables from Boolean expressions using AND / OR / NOT and more.</p>
+          </div>
+          <button class="btn btn-ghost landing-nav" data-module="truth">Open</button>
+        </div>
+
+        <div class="landing-feature">
+          <div class="landing-feature-icon">∏</div>
+          <div class="landing-feature-body">
+            <h2>Permutations &amp; Combinations</h2>
+            <p>Compute nPr and nCr with step-by-step formulas and factorial lookup.</p>
+          </div>
+          <button class="btn btn-ghost landing-nav" data-module="permcomb">Open</button>
+        </div>
+
+        <div class="landing-feature">
+          <div class="landing-feature-icon">⟲</div>
+          <div class="landing-feature-body">
+            <h2>Graph Tool</h2>
+            <p>Build graphs, add weighted edges, and find shortest paths with Dijkstra.</p>
+          </div>
+          <button class="btn btn-ghost landing-nav" data-module="graph">Open</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
        MOBILE TOPBAR
   ═══════════════════════════════════════════════════════════ -->
   <header class="topbar" id="topbar">

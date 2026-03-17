@@ -1276,8 +1276,67 @@ function escapeHtml(str) {
   document.addEventListener('keydown', e => {
     const tag = document.activeElement?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    const overlay = document.querySelector('#landingScreen');
+    if (overlay && !overlay.classList.contains('hidden')) return;
     const mod = map[e.key];
     if (mod) document.querySelector(`.nav-item[data-module="${mod}"]`)?.click();
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LANDING SCREEN
+═══════════════════════════════════════════════════════════════════════════ */
+(function LandingScreen() {
+  const overlay   = $('#landingScreen');
+  const enterBtn  = $('#landingEnter');
+  const skipToggle = $('#landingSkip');
+  const STORAGE_KEY = 'dmToolkit:landingSkip';
+
+  if (!overlay || !enterBtn || !skipToggle) return;
+
+  const skipLanding = localStorage.getItem(STORAGE_KEY) === '1';
+  if (skipLanding) {
+    overlay.remove();
+    return;
+  }
+
+  document.body.classList.add('no-scroll');
+  requestAnimationFrame(() => overlay.classList.add('visible'));
+
+  function close() {
+    overlay.classList.add('hidden');
+    document.body.classList.remove('no-scroll');
+    setTimeout(() => overlay.remove(), 420);
+  }
+
+  function persistSetting() {
+    if (skipToggle.checked) localStorage.setItem(STORAGE_KEY, '1');
+    else localStorage.removeItem(STORAGE_KEY);
+  }
+
+  function navigateToModule(moduleId) {
+    const navBtn = document.querySelector(`.nav-item[data-module="${moduleId}"]`);
+    if (navBtn) navBtn.click();
+  }
+
+  $$('.landing-nav').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const moduleId = btn.dataset.module;
+      if (moduleId) navigateToModule(moduleId);
+      persistSetting();
+      close();
+    });
+  });
+
+  enterBtn.addEventListener('click', () => {
+    persistSetting();
+    close();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !overlay.classList.contains('hidden')) {
+      enterBtn.click();
+    }
   });
 })();
 
