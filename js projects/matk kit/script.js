@@ -111,6 +111,11 @@ function escapeHtml(str) {
         navBtn.querySelector('.nav-label-text')?.textContent || id;
     }
 
+    // Ensure graph canvas resizes & redraws when the module becomes visible
+    if (id === 'graph') {
+      window.dispatchEvent(new Event('graphModuleActivated'));
+    }
+
     if (window.innerWidth <= 768) closeSidebar();
   }
 
@@ -1224,6 +1229,16 @@ function escapeHtml(str) {
     resizeCanvas();
     autoLayout();
     draw();
+  });
+
+  // When the graph module becomes visible after being hidden, ensure the
+  // canvas is sized correctly and the graph is redrawn.
+  window.addEventListener('graphModuleActivated', () => {
+    requestAnimationFrame(() => {
+      resizeCanvas();
+      autoLayout();
+      draw();
+    });
   });
 
   requestAnimationFrame(() => {
